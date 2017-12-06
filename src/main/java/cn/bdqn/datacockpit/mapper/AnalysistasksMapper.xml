@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bdqn.datacockpit.mapper.AnalysistasksMapper" >
+  <resultMap id="BaseResultMap" type="cn.bdqn.datacockpit.entity.Analysistasks" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="endtime" property="endtime" jdbcType="DATE" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="did" property="did" jdbcType="INTEGER" />
+    <result column="taskstatus" property="taskstatus" jdbcType="INTEGER" />
+    <result column="rule" property="rule" jdbcType="VARCHAR" />
+    <result column="feedback" property="feedback" jdbcType="VARCHAR" />
+    <result column="arithmeticid" property="arithmeticid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, starttime, endtime, cid, did, taskstatus, rule, feedback, arithmeticid
+  </sql>
+  
+  <select id="selectAllTasks" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from analysistasks
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from analysistasks
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from analysistasks
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.bdqn.datacockpit.entity.Analysistasks" >
+    insert into analysistasks (id, starttime, endtime, 
+      cid, did, taskstatus, 
+      rule, feedback, arithmeticid
+      )
+    values (#{id,jdbcType=INTEGER}, #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=DATE}, 
+      #{cid,jdbcType=INTEGER}, #{did,jdbcType=INTEGER}, #{taskstatus,jdbcType=INTEGER}, 
+      #{rule,jdbcType=VARCHAR}, #{feedback,jdbcType=VARCHAR}, #{arithmeticid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.bdqn.datacockpit.entity.Analysistasks" >
+    insert into analysistasks
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="taskstatus != null" >
+        taskstatus,
+      </if>
+      <if test="rule != null" >
+        rule,
+      </if>
+      <if test="feedback != null" >
+        feedback,
+      </if>
+      <if test="arithmeticid != null" >
+        arithmeticid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=DATE},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="taskstatus != null" >
+        #{taskstatus,jdbcType=INTEGER},
+      </if>
+      <if test="rule != null" >
+        #{rule,jdbcType=VARCHAR},
+      </if>
+      <if test="feedback != null" >
+        #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="arithmeticid != null" >
+        #{arithmeticid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.datacockpit.entity.Analysistasks" >
+    update analysistasks
+    <set >
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=DATE},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null" >
+        did = #{did,jdbcType=INTEGER},
+      </if>
+      <if test="taskstatus != null" >
+        taskstatus = #{taskstatus,jdbcType=INTEGER},
+      </if>
+      <if test="rule != null" >
+        rule = #{rule,jdbcType=VARCHAR},
+      </if>
+      <if test="feedback != null" >
+        feedback = #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="arithmeticid != null" >
+        arithmeticid = #{arithmeticid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bdqn.datacockpit.entity.Analysistasks" >
+    update analysistasks
+    set starttime = #{starttime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=DATE},
+      cid = #{cid,jdbcType=INTEGER},
+      did = #{did,jdbcType=INTEGER},
+      taskstatus = #{taskstatus,jdbcType=INTEGER},
+      rule = #{rule,jdbcType=VARCHAR},
+      feedback = #{feedback,jdbcType=VARCHAR},
+      arithmeticid = #{arithmeticid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
