@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.bdqn.datacockpit.datatable.DatatableResult;
 import cn.bdqn.datacockpit.datatable.IsSearchCondition;
 import cn.bdqn.datacockpit.datatable.SearchCondition;
+import cn.bdqn.datacockpit.entity.Analysistasks;
 import cn.bdqn.datacockpit.entity.Companyinfo;
 import cn.bdqn.datacockpit.entity.Tableinfo;
 import cn.bdqn.datacockpit.service.TableinfoService;
@@ -86,7 +87,6 @@ public class Json2Controller {
         HttpSession session = req.getSession();
         HttpSession session1 = req.getSession();
         String ids = (String) session1.getAttribute("No1");
-
         Integer id = Integer.parseInt(ids);
         List<Tableinfo> lists = ts.selectAll(id);
         System.out.println(lists);
@@ -105,8 +105,8 @@ public class Json2Controller {
         context = new ClassPathXmlApplicationContext("spring-common.xml");
         JdbcTemplate jt = (JdbcTemplate) context.getBean("jdbcTemplate");
         List<Map<String, Object>> lists = jdbc1.selectObj(jt, name);
-
-        list.setData(lists);
+       list.setData(lists);
         return list;
     }
+  
 }

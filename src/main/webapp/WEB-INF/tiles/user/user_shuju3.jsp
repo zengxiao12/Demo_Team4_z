@@ -28,19 +28,21 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr>
-                  <th>编号</th>
+                <tr >
+                <th>编号</th>
                   <th>项目名称</th>
                   <th>所在区域</th>
                   <th>日期</th>
                   <th class="people_num">到访人数</th>
                   <th class="people_num">认筹人数</th>
                   <th>退订人数</th>
+                  
                 </tr>
                 </thead>
-                <tbody>
-                
-                </tbody>
+
+               <!--  <tbody>
+                		
+                </tbody> -->
                 
               </table>
   <!-- Main content -->

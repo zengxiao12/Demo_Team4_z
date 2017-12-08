@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -26,15 +28,30 @@
                   <th style="text-align: center;">任务反馈</th>                
                 </tr>
                 </thead>
+              <c:forEach items="${lists }" var="lis">
                 <tbody style="text-align: center;">
-                <tr>
-                  <td>1</td>
-                  <td>2017-06-01 12:12:22</td>
-                  <td>2017-06-01 15:12:22</td>
-                  <td>任务完成</td>
-                  <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" data-whatever="@jason" style="width: 110px;height: 20px;font-size: 13px;line-height: 0px">查看结果</button></td>
-                </tr>
-                <tr>
+                 <tr>
+                  <td>${lis.id }</td>
+                  <td><fmt:formatDate value="${lis.starttime }" pattern="yyyy-MM-dd HH:mm"/></td>
+                  <td><fmt:formatDate value="${lis.endtime }" pattern="yyyy-MM-dd HH:mm"/></td>
+                  <c:choose>
+                  	<c:when test="${lis.taskstatus==1 }">
+                  		<td>任务进行中 </td>
+                  	</c:when>
+                  	<c:when test="${lis.taskstatus==0 }">
+                  		<td>任务已添加</td>
+                  	</c:when>
+                  	<c:when test="${lis.taskstatus==2 }">
+                  		<td>任务已完成</td>
+                  		<td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" data-whatever="@jason" style="width: 110px;height: 20px;font-size: 13px;line-height: 0px">查看结果</button></td>
+                  	</c:when>
+                  	<c:when test="${lis.taskstatus==-1 }">
+                  		<td>任务失败</td>
+                  		<td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1" style="width: 110px;height: 20px;font-size: 13px;line-height: 0px">查看出错信息</button></td>
+                  	</c:when>		
+                  </c:choose>
+               </tr>
+                <!-- <tr>
                   <td>2</td>
                   <td>2017-06-11 12:12:22</td>
                   <td>2017-06-11 18:12:22</td>
@@ -54,8 +71,11 @@
                   <td></td>
                   <td>任务已添加</td>
                   <td><a href="#"></a></td>
-                </tr>
+                </tr> -->
+                
+                </c:forEach>
                 </tbody>
+                
               </table>
 <div class="modal fade bs-example-modal-sm" id="myModal1" role="dialog" aria-label="myModalLabel" aria-hidden="true">  
     <div class="modal-dialog modal-sm" style="width: 40%">  

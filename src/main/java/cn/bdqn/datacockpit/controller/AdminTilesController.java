@@ -22,11 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.bdqn.datacockpit.entity.Analysistasks;
 import cn.bdqn.datacockpit.entity.Companyinfo;
 import cn.bdqn.datacockpit.entity.Datarelation;
 import cn.bdqn.datacockpit.entity.Info;
 import cn.bdqn.datacockpit.entity.Tableinfo;
 import cn.bdqn.datacockpit.entity.Userinfo;
+import cn.bdqn.datacockpit.mapper.AnalysistasksMapper;
 import cn.bdqn.datacockpit.service.CompanyinfoService;
 import cn.bdqn.datacockpit.service.DatarelationService;
 import cn.bdqn.datacockpit.service.InfoService;
@@ -58,6 +60,8 @@ public class AdminTilesController {
 
     @Autowired
     private RelevanceTableService releTable;
+    @Autowired
+    private  AnalysistasksMapper analysis;
 
     @RequestMapping("/admin_index")
     public String index(Model model) {
@@ -259,7 +263,9 @@ public class AdminTilesController {
 
     @RequestMapping("/admin_shuju3")
     public String shuju3(Model model) {
-        return "admin_shuju3.page";
+    	List<Analysistasks> lists=analysis.selectAllTasks();
+    	model.addAttribute("lists", lists);
+    	return "admin_shuju3.page";
     }
 
     @RequestMapping("/admin_shuju4")
@@ -477,6 +483,7 @@ public class AdminTilesController {
                     lists3.add(string);
                 }
                 model.addAttribute("lists3", lists3);
+                System.out.println("list3:"+lists3);
             } catch (Exception e) {
                 e.printStackTrace();
             }

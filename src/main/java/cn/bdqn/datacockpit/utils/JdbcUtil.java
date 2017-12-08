@@ -106,6 +106,7 @@ public class JdbcUtil {
         StringBuffer sb = new StringBuffer("");
         sb.append("CREATE TABLE `" + tableName + "` (");
         sb.append(" `id` int(11) NOT NULL AUTO_INCREMENT,");
+
         Set<String> set = map.keySet();
         for (String key : set) {
             if (key.equals("shows")) {

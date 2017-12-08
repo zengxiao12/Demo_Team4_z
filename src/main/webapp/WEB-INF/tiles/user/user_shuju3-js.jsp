@@ -48,28 +48,31 @@ $("button[data-dismiss=modal]").click(function(){
 
 </script>
 <script>
-  $(function () {
-	var t =	$('#example1').DataTable({
+$(function () {
+ 	var t =	$('#example1').DataTable({
 		 "ajax"		: {
 	    	  "url"		: "<%=request.getContextPath()%>/shuju_3.shtml?id=${name1}",
 	    	  "method"	: "POST",
-	    	  "headers" : {"Content-Type": "application/json"},
-	    	  "data"	: function(d){
-	    		  return JSON.stringify(d);
+	    	 /*  "headers" : {"Content-Type": "application/json"}, */
+	    	  "data"	:	function(d){
+	    		  return JSON.stringify(d); 
+	    		
 	    	  }
+	    	 		
 	      },
-	      "columnDefs": [
-	    	  {"targets": 0,
-	    	   "data": "office",
-	    	 "defaultContent": "1"
-	    	 },
+	     	
+	    	 "columnDefs":  [
+              {"targets": 0,
+           	 "data": "office",
+ 	    	 "defaultContent": "1"
+    	      },           
 	    	  {"targets": 1,
 	    	   "data":"${lists3[1]}",
 	    	   "render":function (data,type,row,meta) {
 	    	      return '<span class="texts" onmouseover="mouse()" onclick="pop1()">'+data+'</span>' }
 	    	  },
-	    	  {"targets": 2,
-	    	   "data":"${lists3[2]}"}, 
+	    	 {"targets": 2,
+	    	   "data":"${lists3[2] }"}, 
 	    	  {"targets": 3,
 	    	   "data":"times"},
 	    	  {"targets": 4,
@@ -78,10 +81,12 @@ $("button[data-dismiss=modal]").click(function(){
 	    	   "data":"${lists3[6]}"},
 	    	  {"targets": 6,
 	    	   "data":"${lists3[5]}"},
-	      ],
-    
+	    	 
+	      ], 
+
+    			
 	});
-		t.on('order.dt search.dt',
+		 t.on('order.dt search.dt',
 		 function() {
    		       t.column(0, {
    		              search: 'applied',
@@ -89,10 +94,10 @@ $("button[data-dismiss=modal]").click(function(){
    		        }).nodes().each(function(cell, i) {
    		              cell.innerHTML = i + 1;
    		  	  
-   		  	   })        	 	
-   		  	   }).draw();	
+   		  	   })        		
+   		  	   }).draw(); 	
 	
-  })
+  }) 
 </script>
 <script type="text/javascript">
 function mouse(){

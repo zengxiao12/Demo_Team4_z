@@ -30,12 +30,13 @@
 	    	  }
 	    	  
 	      },
+	      
 	     	
 	      "columns": [
 	             {"data": "office",
 	            	"defaultContent": "1"},
-				 {"data":"stopTime"},
 	    	  	{"data":"zt"},
+	    	  	 {"data":"stopTime"},
 	      ],
 	      
 	});
