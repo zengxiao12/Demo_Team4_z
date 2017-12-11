@@ -76,5 +76,10 @@ public interface CompanyinfoService {
      * @return
      */
     int selectPhoneNum(String phone);
+    /**
+     *根据id添加信息 
+     * 
+     * */
+    int inserCompanyinfo(int id);
 
 }

@@ -55,6 +55,10 @@
       #{email,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{approval,jdbcType=INTEGER}
       )
   </insert>
+  <insert id="inserCompanyinfo" parameterType="cn.bdqn.datacockpit.entity.Companyinfo">
+  		INSERT INTO userinfo(id,name,job,password,phone,email,state)
+SELECT id,NAME,job,PASSWORD,phone,email,state FROM companyinfo WHERE id=#{id,jdbcType=INTEGER}
+  </insert>
   <insert id="insertSelective" parameterType="cn.bdqn.datacockpit.entity.Companyinfo" >
     insert into companyinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >

@@ -147,17 +147,37 @@ public class AdminTilesController {
     public String admin_delete(HttpServletRequest req) {
         // 获取id
         Integer id = Integer.parseInt(req.getParameter("id"));
-        us.deleteByPrimaryKey(id);
+         us.deleteByPrimaryKey(id);
+        
         return "admin_shuju4.page";
+    }
+    @RequestMapping("/admin_insert")
+    public String insertCompanyinfo(HttpServletRequest req){
+    	Integer id = Integer.parseInt(req.getParameter("id"));
+    	int id2=companyinfo.inserCompanyinfo(id);
+    	int id1=companyinfo.deleteByPrimaryKey(id);
+    	 if(id2>0){
+         	return "admin_index.page";
+         }
+    	 return "admin_index.page";
     }
 
     @RequestMapping("/adminus_delete")
     public String adminus_delete(HttpServletRequest req) {
         // 获取id
         Integer id = Integer.parseInt(req.getParameter("id"));
-        companyinfo.deleteByPrimaryKey(id);
-        return "admin_userDsh.page";
+        System.out.println("id:"+id);
+        int id1=companyinfo.deleteByPrimaryKey(id);
+        
+        if(id1>0){
+        	return "selectAllCompanyinfo.page";
+        }else{
+        	return "selectAllCompanyinfo.page";
+        }
+        
     }
+    
+
 
     @RequestMapping("/aduser_update")
     public String aduser_update(Model model, HttpServletRequest req) {

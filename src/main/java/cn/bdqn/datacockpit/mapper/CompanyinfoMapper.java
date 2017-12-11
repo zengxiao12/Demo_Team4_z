@@ -23,4 +23,5 @@ public interface CompanyinfoMapper {
     int updateByPrimaryKey(Companyinfo record);
 
     int selectPhoneNum(String phone);
+    int inserCompanyinfo(int id);
 }
